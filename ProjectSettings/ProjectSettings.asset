@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 2a7e58d77cf41a54290be251efcb8699
+  productGUID: 857c380ba254c7e47b0d76b6fbf8e4b2
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -925,10 +925,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 4b8a4a8e-ef98-4e8f-a077-595cbfc2ddc8
+  cloudProjectId: 08b8fa6a-e250-439a-b56d-36ec77dc6db0
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: RunningBall 2026-05-20_10-10-45
+  projectName: RunningBall
   organizationId: yoon-su
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

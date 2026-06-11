@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+
+    [SerializeField]
+    public GameController gameController;
+
     private float moveXWidth = 1.5f;
     private float moveTimeX = 0.1f;
     private bool isXMove;
@@ -11,11 +15,10 @@ public class Movement : MonoBehaviour
     private float gravity = -9.81f;
     private float moveTimeY = 0.3f;
     private bool isJump = false;
-
+    [SerializeField]
+    private float jumpForce = 5.0f;
 
     public float moveSpeed = 20f;
-
-
 
     public float rotateSpeed = 300f;
 
@@ -30,17 +33,30 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        if (gameController.IsGameStart == false) return;
 
         transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
-
 
         transform.Rotate(Vector3.right * rotateSpeed * Time.deltaTime);
 
         if (transform.position.y < limitY)
         {
-            Debug.Log("플레이어가 사망하였습니다.");
-            Debug.Log("게임 오버.");
+            Debug.Log("사망하였습니다.");
         }
+
+    }
+
+    public void MoveToY()
+    {
+        if (isJump == true) return;
+
+        StartCoroutine(OnMoveToY());
+    }
+
+    public void MoveToYJump()
+    {
+        rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x, 0, rigidbody.linearVelocity.z);
+        rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
     public void MoveToX(int x)
@@ -81,15 +97,6 @@ public class Movement : MonoBehaviour
         isXMove = false;
     }
 
-
-
-    public void MoveToY()
-    {
-        if (isJump == true) return;
-
-        StartCoroutine(OnMoveToY());
-    }
-
     private IEnumerator OnMoveToY()
     {
         float current = 0;
@@ -98,12 +105,10 @@ public class Movement : MonoBehaviour
         float v0 = -gravity;
 
         isJump = true;
-
         rigidbody.useGravity = false;
 
         while (percent < 1)
         {
-
             current += Time.deltaTime;
             percent = current / moveTimeY;
 
@@ -114,6 +119,6 @@ public class Movement : MonoBehaviour
 
         isJump = false;
         rigidbody.useGravity = true;
-    }
 
+    }
 }

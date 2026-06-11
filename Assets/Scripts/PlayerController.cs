@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class NewMonoBehaviourScript : MonoBehaviour
 {
-    [SerializeField]
-    private float dragDistance = 50.0f;
+    [SerializeField] private float dragDistance = 50.0f;
     private Vector3 touchStart;
     private Vector3 touchEnd;
 
@@ -22,7 +21,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            OnPcPlatform();
+            OnPCPlatform();
         }
     }
 
@@ -42,13 +41,15 @@ public class PlayerController : MonoBehaviour
 
             OnDragXY();
         }
+
     }
 
-    private void OnPcPlatform()
+    private void OnPCPlatform()
     {
         if (Input.GetMouseButtonDown(0))
         {
             touchStart = Input.mousePosition;
+
         }
         else if (Input.GetMouseButton(0))
         {
@@ -59,9 +60,10 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // movement.MoveToYJump();
+            movement.MoveToYJump();
         }
     }
+
 
     private void OnDragXY()
     {
@@ -77,8 +79,5 @@ public class PlayerController : MonoBehaviour
             movement.MoveToY();
             return;
         }
-
     }
-
-
 }

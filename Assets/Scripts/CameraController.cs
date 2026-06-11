@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
-
     [SerializeField]
     private Transform target;
 
